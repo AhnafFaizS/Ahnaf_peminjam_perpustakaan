@@ -72,7 +72,7 @@ class RegisterView extends GetView<RegisterController> {
           CircularProgressIndicator():
           ElevatedButton(onPressed: () {
             controller.register();
-          }, child: Text("Tambah"))
+          }, child: Text("Register"))
           )
         ],
       ),
