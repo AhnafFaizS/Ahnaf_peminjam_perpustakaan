@@ -50,7 +50,7 @@ class RegisterController extends GetxController {
             }
         );
         if (response.statusCode == 201) {
-          Get.snackbar("selamat", "Hore");
+          Get.snackbar("selamat", "Anda Berhasil Register");
           Get.offAllNamed(Routes.LOGIN);
         } else {
           Get.snackbar("Soory", "Login Gagal", backgroundColor: Colors.orange);

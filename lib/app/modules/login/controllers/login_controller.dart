@@ -1,4 +1,5 @@
 import 'package:ahnap_peminjam/app/data/constant/endpoint.dart';
+import 'package:ahnap_peminjam/app/data/model/response_login.dart';
 import 'package:ahnap_peminjam/app/data/model/storage_provider.dart';
 import 'package:ahnap_peminjam/app/data/provider/api_provider.dart';
 import 'package:ahnap_peminjam/app/routes/app_pages.dart';
@@ -39,9 +40,10 @@ class LoginController extends GetxController {
             data: dio.FormData.fromMap(
                 {
                   "username": usernameController.text.toString(),
-                  "password": passwordController.text.toString()
-                }));
+                  "password": passwordController.text.toString()}));
         if (response.statusCode == 200) {
+          ResponseLogin responseLogin=ResponseLogin.fromJson(response.data);
+          await StorageProvider.write(StorageKey.idUser, responseLogin.data!.id.toString());
           await StorageProvider.write(StorageKey.status, "logged");
           Get.offAllNamed(Routes.HOME);
         } else {
